@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dd-vectordb"
+version = "0.1.0"
+description = "Unified Vector DB abstraction layer for Python — clean adapters for FAISS, ChromaDB, Qdrant and more"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Wen G. Gong", email = "wen.gong.research@gmail.com" }]
+keywords = ["vector-database", "semantic-search", "faiss", "chromadb", "qdrant", "embeddings", "similarity-search"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "numpy>=1.21.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+faiss = ["faiss-cpu>=1.7.0"]
+faiss-gpu = ["faiss-gpu>=1.7.0"]
+chroma = ["chromadb>=0.4.0"]
+qdrant = ["qdrant-client>=1.6.0"]
+all = [
+    "faiss-cpu>=1.7.0",
+    "chromadb>=0.4.0",
+    "qdrant-client>=1.6.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov",
+    "numpy>=1.21.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/digital-duck/dd-vectordb"
+Repository = "https://github.com/digital-duck/dd-vectordb"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dd_vectordb"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"
