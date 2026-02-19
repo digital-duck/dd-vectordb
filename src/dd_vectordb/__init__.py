@@ -28,7 +28,7 @@ Models
 - :class:`CollectionInfo`  — collection metadata summary
 """
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 from dd_vectordb.base import BaseVectorDB
 from dd_vectordb.models import CollectionInfo, Document, SearchResult
