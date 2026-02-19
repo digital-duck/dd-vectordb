@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "dd-vectordb"
-version = "0.1.0"
+version = "0.1.1"
 description = "Unified Vector DB abstraction layer for Python — clean adapters for FAISS, ChromaDB, Qdrant and more"
 readme = "README.md"
 license = { text = "MIT" }
