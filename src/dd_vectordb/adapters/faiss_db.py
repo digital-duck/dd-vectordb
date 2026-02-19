@@ -106,7 +106,10 @@ class FAISSVectorDB(BaseVectorDB):
             doc = self._docs[doc_id]
             if filter and not all(doc.metadata.get(k) == v for k, v in filter.items()):
                 continue
-            results.append(SearchResult(document=doc, score=float(score), rank=rank))
+            # Normalise: cosine/IP → higher is better (already so);
+            # L2 distance → negate so higher score still means more similar.
+            final_score = float(score) if self._metric == "cosine" else -float(score)
+            results.append(SearchResult(document=doc, score=final_score, rank=rank))
             rank += 1
             if rank > k:
                 break
